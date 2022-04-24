@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello World")
+	fmt.Println("LMWN-COVID-SUMMARY-by-NuttaponN.")
 	controllers.InitializePatients()
 
 	r := routes.SetupRouter()

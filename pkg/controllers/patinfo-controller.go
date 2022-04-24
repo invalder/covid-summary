@@ -11,8 +11,6 @@ import (
 	"github.com/invalder/covid-summary/pkg/models"
 )
 
-// var Patients = []models.Patient{}
-
 type covidCase struct {
 	Data []struct {
 		ConfirmDate    string      `json:"ConfirmDate"`
@@ -30,6 +28,7 @@ type covidCase struct {
 	} `json:"Data"`
 }
 
+var url = "https://static.wongnai.com/devinterview/covid-cases.json"
 var Patients = models.Patient{}
 var Summary = models.Summary{}
 
@@ -40,8 +39,8 @@ func InitializePatients() {
 }
 
 func fetchData() covidCase {
-	url := "https://static.wongnai.com/devinterview/covid-cases.json"
 
+	//Since the Cert is not valid, therefore bypassing is needed
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	http.Header.Set(http.Header{}, "Content-Type", "application/json")
 	res, err := http.Get(url)
